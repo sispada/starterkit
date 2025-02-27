@@ -163,9 +163,9 @@ export function RequestInstance(url, options) {
             store.overlay = false;
             htmlTag[0].style.overflowY = "scroll";
 
-            let { status, message } = response.data;
+            let { status, success, message } = response.data;
 
-            if (status === true && message) {
+            if ((status === true || success === true) && message) {
                 store.snackbar.color = "green";
                 store.snackbar.text = message;
                 store.snackbar.state = true;

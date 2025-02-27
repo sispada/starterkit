@@ -155,6 +155,7 @@
                 <slot
                     :combos="combos"
                     :record="record"
+                    :statuses="statuses"
                     :theme="theme"
                     :store="store"
                 ></slot>
@@ -164,15 +165,33 @@
 
     <form-help mode="show" :withActivityLogs="withActivityLogs">
         <template v-slot:feed>
-            <slot name="feed" :theme="theme" :record="record"></slot>
+            <slot
+                name="feed"
+                :combos="combos"
+                :theme="theme"
+                :record="record"
+                :statuses="statuses"
+            ></slot>
         </template>
 
         <template v-slot:info>
-            <slot name="info" :theme="theme" :record="record"></slot>
+            <slot
+                name="info"
+                :combos="combos"
+                :theme="theme"
+                :record="record"
+                :statuses="statuses"
+            ></slot>
         </template>
 
         <template v-slot:icon>
-            <slot name="icon" :theme="theme" :record="record"></slot>
+            <slot
+                name="icon"
+                :combos="combos"
+                :theme="theme"
+                :record="record"
+                :statuses="statuses"
+            ></slot>
         </template>
     </form-help>
 </template>
@@ -219,6 +238,7 @@ export default {
             page,
             pageKey,
             softdelete,
+            statuses,
             record,
             theme,
             title,
@@ -247,6 +267,7 @@ export default {
             pageKey,
             record,
             softdelete,
+            statuses,
             theme,
             title,
 
