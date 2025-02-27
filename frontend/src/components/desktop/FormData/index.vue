@@ -28,8 +28,7 @@
         ></v-app-bar-nav-icon>
 
         <v-toolbar-title class="text-body-2 font-weight-bold text-uppercase">{{
-            // page.name ?? module.name
-            canCreate ? "CEAT" : "XXX"
+            page.name ?? module.name
         }}</v-toolbar-title>
 
         <v-spacer></v-spacer>
