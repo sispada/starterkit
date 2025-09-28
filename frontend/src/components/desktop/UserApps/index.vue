@@ -2,7 +2,7 @@
     <v-app-bar
         :color="`${theme}-lighten-5`"
         height="72"
-        scroll-behavior="hide elevate"
+        scroll-behavior="elevate"
         scroll-threshold="87"
     >
         <v-app-bar-nav-icon @click="railMode = !railMode"></v-app-bar-nav-icon>

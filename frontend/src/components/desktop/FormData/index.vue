@@ -3,7 +3,7 @@
         :color="`${theme}-lighten-5`"
         :order="1"
         height="72"
-        scroll-behavior="hide elevate"
+        scroll-behavior="elevate"
         scroll-threshold="87"
     >
         <v-btn
@@ -187,7 +187,7 @@ export default {
         const store = usePageStore();
 
         store.helpState = false;
-        store.sidenavState = true;
+        store.sidenavState = false;
 
         const {
             canCreate,
@@ -261,10 +261,6 @@ export default {
     },
 
     methods: {
-        // clickOnRow: function (event, { item }) {
-        //     this.setSelected(item);
-        // },
-
         loadItems: function (tableOptions) {
             this.getPageDatas(tableOptions);
         },
@@ -272,8 +268,8 @@ export default {
 
     watch: {
         params: {
-            handler: function (newOptions) {
-                this.getPageDatas(newOptions);
+            handler: function () {
+                // this.getPageDatas(newOptions);
             },
 
             deep: true,

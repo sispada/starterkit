@@ -1,9 +1,5 @@
 <template>
-    <v-app-bar
-        :color="theme"
-        scroll-behavior="hide elevate"
-        scroll-threshold="87"
-    >
+    <v-app-bar :color="theme" scroll-behavior="elevate" scroll-threshold="87">
         <v-btn icon v-if="parentName">
             <v-icon>arrow_back</v-icon>
         </v-btn>

@@ -3,7 +3,7 @@
         :color="`${theme}-lighten-5`"
         :order="1"
         height="72"
-        scroll-behavior="hide elevate"
+        scroll-behavior="elevate"
         scroll-threshold="87"
     >
         <v-btn icon="arrow_back" @click="openFormData"></v-btn>
@@ -70,6 +70,11 @@ export default {
     props: {
         beforePost: Function,
 
+        contentType: {
+            type: String,
+            default: "application/json",
+        },
+
         dataFromStore: Boolean,
 
         hideUpdate: Boolean,
@@ -89,6 +94,7 @@ export default {
 
         store.beforePost = props.beforePost;
         store.activityLog = props.withActivityLogs;
+        store.contentType = props.contentType;
 
         const {
             combos,

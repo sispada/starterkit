@@ -1,8 +1,11 @@
 <script setup>
 import { ref, watch, onBeforeUnmount } from "vue";
-import * as pdfjsLib from "pdfjs-dist/build/pdf.min.mjs";
+import * as pdfjsLib from "pdfjs-dist";
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdfjs/pdf.worker.min.js";
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+    "pdfjs-dist/build/pdf.worker.mjs",
+    import.meta.url
+).toString();
 
 defineOptions({
     name: "widget-pdf",

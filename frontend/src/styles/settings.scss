@@ -286,3 +286,11 @@ table.v-plain-table.with-border-bottom > tbody > tr:not(:last-child) > td {
 .v-fab.v-fab--absolute.v-fab--bottom.v-fab--right > .v-fab__container {
     margin-bottom: 45px;
 }
+
+.v-input--horizontal .v-input__append {
+    margin-inline-start: 0px;
+}
+
+.v-input--horizontal .v-input__append .v-icon{
+    margin-inline-start: 16px;
+}

@@ -33,6 +33,7 @@ export const usePageStore = defineStore("pageStore", {
 
         checksum: null,
         combos: {},
+        contentType: "application/json",
         currentFile: {},
 
         dialogFile: false,
@@ -452,7 +453,10 @@ export const usePageStore = defineStore("pageStore", {
             }
 
             if (Object.keys(params).length === 0) {
-                return;
+                params = {
+                    page: 1,
+                    itemsPerPage: 10,
+                };
             }
 
             const defaultParams = this.mapDefaultParams(params);
@@ -852,11 +856,9 @@ export const usePageStore = defineStore("pageStore", {
                 this.paramsOld = JSON.parse(JSON.stringify(resultParams));
             } else {
                 if (
-                    JSON.stringify(resultParams) ===
+                    JSON.stringify(resultParams) !==
                     JSON.stringify(this.paramsOld)
                 ) {
-                    return null;
-                } else {
                     this.paramsOld = JSON.parse(JSON.stringify(resultParams));
                 }
             }
@@ -942,6 +944,7 @@ export const usePageStore = defineStore("pageStore", {
 
             this.$http(pagePath, {
                 method: "POST",
+                contentType: this.contentType,
                 params: this.record,
             }).then((record) => {
                 this.records.push(record);
@@ -997,8 +1000,9 @@ export const usePageStore = defineStore("pageStore", {
             }`;
 
             this.$http(pagePath, {
-                method: "PUT",
-                params: this.record,
+                method: "POST",
+                contentType: this.contentType,
+                params: { ...this.record, _method: "PUT" },
             }).then((record) => {
                 let index = this.records.findIndex(
                     (rc) => rc[this.key] === record[this.key]

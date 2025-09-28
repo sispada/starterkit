@@ -3,7 +3,7 @@
         :color="`${theme}-lighten-5`"
         :order="1"
         height="72"
-        scroll-behavior="hide elevate"
+        scroll-behavior="elevate"
         scroll-threshold="87"
     >
         <v-btn
@@ -83,6 +83,10 @@ export default {
 
     props: {
         beforePost: Function,
+        contentType: {
+            type: String,
+            default: "application/json",
+        },
         hideSave: Boolean,
 
         maxWidth: {
@@ -100,6 +104,7 @@ export default {
 
         store.beforePost = props.beforePost;
         store.activityLog = false;
+        store.contentType = props.contentType;
 
         const {
             combos,

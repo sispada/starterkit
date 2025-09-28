@@ -1,7 +1,7 @@
 <template>
     <v-app-bar
         :color="`${theme}`"
-        scroll-behavior="hide elevate"
+        scroll-behavior="elevate"
         scroll-threshold="87"
     >
         <v-btn

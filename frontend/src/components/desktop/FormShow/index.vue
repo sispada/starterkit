@@ -3,7 +3,7 @@
         :color="`${theme}-lighten-5`"
         :order="1"
         height="72"
-        scroll-behavior="hide elevate"
+        scroll-behavior="elevate"
         scroll-threshold="87"
     >
         <v-btn
