@@ -47,6 +47,19 @@
                                     >{{ item.name }}</v-list-item-title
                                 >
                             </template>
+
+                            <template
+                                v-if="
+                                    badges[item.slug] && badges[item.slug].show
+                                "
+                                v-slot:append
+                            >
+                                <v-badge
+                                    :color="badges[item.slug].color"
+                                    :content="badges[item.slug].value"
+                                    inline
+                                ></v-badge>
+                            </template>
                         </v-list-item>
                     </v-list>
                 </div>
@@ -126,6 +139,7 @@ export default {
 
         const {
             auth,
+            badges,
             dockMenus,
             overlay,
             railMode,
@@ -138,6 +152,7 @@ export default {
 
         return {
             auth,
+            badges,
             dockMenus,
             initModule,
             overlay,

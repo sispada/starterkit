@@ -31,6 +31,7 @@ export const usePageStore = defineStore("pageStore", {
         canRestore: false,
         canDestroy: false,
 
+        badges: {},
         checksum: null,
         combos: {},
         contentType: "application/json",
@@ -403,11 +404,12 @@ export const usePageStore = defineStore("pageStore", {
                 `${
                     this.module.prefix ? this.module.prefix + "/" : ""
                 }api/dashboard`
-            ).then(({ record }) => {
-                this.record = record;
+            ).then((response) => {
+                // this.record = record;
+                this.mapResponseData(response);
 
                 if (typeof callback === "function") {
-                    callback(record);
+                    callback(response);
                 }
             });
         },
@@ -572,6 +574,7 @@ export const usePageStore = defineStore("pageStore", {
                 /** map setups */
                 if (setups) {
                     const {
+                        badges,
                         combos,
                         filters,
                         headers,
@@ -584,6 +587,9 @@ export const usePageStore = defineStore("pageStore", {
                         title,
                         trashed,
                     } = setups;
+
+                    this.badges =
+                        badges && Object.keys(badges).length > 0 ? badges : {};
 
                     this.combos =
                         combos && Object.keys(combos).length > 0 ? combos : {};
@@ -688,6 +694,7 @@ export const usePageStore = defineStore("pageStore", {
 
                 if (setups) {
                     const {
+                        badges,
                         combos,
                         icon,
                         key,
@@ -698,6 +705,8 @@ export const usePageStore = defineStore("pageStore", {
                         title,
                     } = setups;
 
+                    this.badges =
+                        badges && Object.keys(badges).length > 0 ? badges : {};
                     this.combos =
                         combos && Object.keys(combos).length > 0 ? combos : {};
                     this.icon = icon;
