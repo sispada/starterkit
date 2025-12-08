@@ -879,14 +879,9 @@ export const usePageStore = defineStore("pageStore", {
             this.formStateLast = JSON.parse(JSON.stringify(this.formState));
             this.formState = "create";
 
-            // if (this.sidenavState) {
-            //     this.sidenavState = false;
             setTimeout(() => {
                 this.$router.push({ name: this.page.slug + "-create" });
             }, 300);
-            // } else {
-            //     this.$router.push({ name: this.page.slug + "-create" });
-            // }
         },
 
         openFormData() {

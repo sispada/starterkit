@@ -267,15 +267,6 @@ export default {
     },
 
     watch: {
-        params: {
-            handler: function () {
-                // this.getPageDatas(newOptions);
-            },
-
-            deep: true,
-            immediate: true,
-        },
-
         selected: {
             handler: function (selected) {
                 this.record =
