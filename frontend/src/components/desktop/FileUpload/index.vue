@@ -19,7 +19,7 @@
             </v-icon>
 
             <v-dialog
-                v-else-if="modelValue && extension === '.pdf'"
+                v-else-if="modelValue && extension === 'pdf'"
                 transition="dialog-bottom-transition"
                 v-model="dialog"
                 fullscreen
@@ -38,7 +38,7 @@
             </v-dialog>
 
             <v-icon
-                v-else-if="modelValue && extension !== '.pdf'"
+                v-else-if="modelValue && extension !== 'pdf'"
                 @click="downloadFileUpload"
             >
                 downloading
@@ -186,7 +186,6 @@ export default {
         },
 
         onFileChange(event) {
-            console.log(event);
             let file = event.target.files.item(0);
 
             this.fileUUID(file).then((uuid) => {
@@ -210,9 +209,13 @@ export default {
                 method: "POST",
                 contentType: "multipart/form-data",
                 params: data,
-            }).then((response) => {
-                this.callback(response);
-            });
+            })
+                .then((response) => {
+                    this.callback(response);
+                })
+                .catch((response) => {
+                    console.log(response);
+                });
         },
 
         updateValue(value) {

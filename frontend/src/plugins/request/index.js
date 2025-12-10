@@ -177,7 +177,8 @@ export function RequestInstance(url, options) {
             store.overlay = false;
             htmlTag[0].style.overflowY = "scroll";
 
-            let status = error.response ? error.response.status : error.status;
+            let status = error?.response?.status ?? error?.status;
+            let message = error?.response?.data?.message ?? error?.message;
 
             if (status === 401) {
                 Object.keys(localStorage).forEach((key) => {
@@ -191,23 +192,23 @@ export function RequestInstance(url, options) {
 
             if (error.response) {
                 store.snackbar.color = "deep-orange";
-                store.snackbar.text = error.response.data.message;
+                store.snackbar.text = message;
                 store.snackbar.state = true;
 
                 throw {
-                    status: error.response.status,
-                    message: error.response.data.message,
+                    status: status,
+                    message: message,
                 };
             } else {
                 error = error.toJSON();
 
                 store.snackbar.color = "deep-orange";
-                store.snackbar.text = error.message;
+                store.snackbar.text = message;
                 store.snackbar.state = true;
 
                 throw {
-                    status: error.status,
-                    message: error.message,
+                    status: status,
+                    message: message,
                 };
             }
         });
